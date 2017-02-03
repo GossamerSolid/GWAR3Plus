@@ -1,0 +1,1 @@
+["notification",["GWAR3_CommanderDisconnect",[]]] Spawn fnc_clt_messages;

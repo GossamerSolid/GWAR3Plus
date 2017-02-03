@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project name="Arma2">
+	<Package name="CWarfare">
+		<Container name="WF">
+			<Key ID="STR_WF_Abort">
+				<English>Abort</English>
+			</Key>
+		</Container>
+	</Package>
+</Project>

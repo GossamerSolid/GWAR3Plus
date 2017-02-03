@@ -1,0 +1,46 @@
+//Mission Info Include
+#include "resources\missioninfo.hpp"
+
+//Dialog Controls
+#include "resources\controls.hpp"
+
+//HUDs
+class RscTitles 
+{
+	//HUD Include
+	#include "resources\hud.hpp"
+	//Loading screen include
+	#include "resources\loadingscreen.hpp"
+	//Deployment screen include
+	#include "resources\deployscreen.hpp"
+};
+
+//GUIs
+#include "resources\GUIs\UI_Construction.hpp"
+#include "resources\GUIs\UI_Deployment.hpp"
+#include "resources\GUIs\UI_CommanderVote.hpp"
+#include "resources\GUIs\UI_Equipment.hpp"
+#include "resources\GUIs\UI_UnitPurchasing.hpp"
+#include "resources\GUIs\UI_Menu.hpp"
+#include "resources\GUIs\UI_ServiceMenu.hpp"
+#include "resources\GUIs\UI_Squad.hpp"
+#include "resources\GUIs\UI_Specializations.hpp"
+#include "resources\GUIs\UI_ServerInfo.hpp"
+#include "resources\GUIs\UI_CommanderRedeploy.hpp"
+#include "resources\GUIs\UI_Research.hpp"
+#include "resources\GUIs\UI_Attach.hpp"
+#include "resources\GUIs\UI_ClientSettings.hpp"
+
+//Notifications
+#include "resources\notifications.hpp"
+
+//Parameters Include
+#include "resources\parameters.hpp"
+
+//Sounds
+class CfgSounds
+{
+	#include "resources\sounds.hpp"
+};
+
+onLoadMissionTime = false;

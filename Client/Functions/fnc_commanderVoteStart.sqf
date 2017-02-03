@@ -1,0 +1,1 @@
+["notification",["GWAR3_CommVoteStart",[]]] Spawn fnc_clt_messages;
