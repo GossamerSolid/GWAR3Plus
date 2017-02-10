@@ -4,11 +4,11 @@
 
 if (!isServer) exitWith {diag_log text "###[GW ERROR] - Server\Init\Init_Networking.sqf must only be called server-side."};
 
-fnc_srv_sendClientData = CompileFinal preprocessFileLineNumbers format["%1\Networking\fnc_sendClientData.sqf",GW_SERVERCODE];
-fnc_srv_clientFncExec = CompileFinal preprocessFileLineNumbers format["%1\Networking\fnc_clientExec.sqf",GW_SERVERCODE];
-fnc_srv_requestClientExec = CompileFinal preprocessFileLineNumbers format["%1\Networking\fnc_requestClientExec.sqf",GW_SERVERCODE];
-fnc_srv_processClientExec = CompileFinal preprocessFileLineNumbers format["%1\Networking\fnc_processClientExec.sqf",GW_SERVERCODE];
-fnc_srv_pushCode = CompileFinal preprocessFileLineNumbers format["%1\Networking\fnc_pushCode.sqf",GW_SERVERCODE];
+fnc_srv_sendClientData = CompileFinal preprocessFileLineNumbers "Server\Networking\fnc_sendClientData.sqf";
+fnc_srv_clientFncExec = CompileFinal preprocessFileLineNumbers "Server\Networking\fnc_clientExec.sqf";
+fnc_srv_requestClientExec = CompileFinal preprocessFileLineNumbers "Server\Networking\fnc_requestClientExec.sqf";
+fnc_srv_processClientExec = CompileFinal preprocessFileLineNumbers "Server\Networking\fnc_processClientExec.sqf";
+fnc_srv_pushCode = CompileFinal preprocessFileLineNumbers "Server\Networking\fnc_pushCode.sqf";
 
 //Client get data from server
 GW_CLIENT_DATA_REQUEST = [];

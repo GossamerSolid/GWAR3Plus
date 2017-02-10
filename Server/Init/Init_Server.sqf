@@ -14,8 +14,8 @@ publicVariable "GW_GVAR_VERSION_SERVER";
 GW_MISSIONPBO = format["%1.%2.pbo",missionName,worldName];
 
 //Handle player joins and leaves
-fnc_srv_playerConnected = CompileFinal preprocessFileLineNumbers format["%1\Functions\fnc_playerConnected.sqf",GW_SERVERCODE];
-fnc_srv_playerDisconnected = CompileFinal preprocessFileLineNumbers format["%1\Functions\fnc_playerDisconnected.sqf",GW_SERVERCODE];
+fnc_srv_playerConnected = CompileFinal preprocessFileLineNumbers "Server\Functions\fnc_playerConnected.sqf";
+fnc_srv_playerDisconnected = CompileFinal preprocessFileLineNumbers "Server\Functions\fnc_playerDisconnected.sqf";
 addMissionEventHandler ["HandleDisconnect",{ _this Spawn fnc_srv_playerDisconnected; true }];
 
 //Set server init flag to false
@@ -30,28 +30,6 @@ publicVariable "GW_GAMERUNNING";
 //Load shared init
 _sharedInit = CompileFinal preprocessFileLineNumbers "Shared\Init\Init_Shared.sqf";
 [] Call _sharedInit;
-
-//Load extension
-_initExt = CompileFinal preprocessFileLineNumbers format["%1\Init\Init_Ext.sqf",GW_SERVERCODE];
-[] Call _initExt;
-
-//Database related
-if (GW_DATABASE) then
-{
-	//Get Server Key
-	GW_SERVERKEY = "";
-	GW_MATCHID = -1;
-	_serverKeyGet = ["GW_SERVERKEY", ["serverid"], []] Spawn fnc_srv_spawnExtension;
-	waitUntil {scriptDone _serverKeyGet};
-	GW_SERVERKEY = GW_SERVERKEY select 1;
-	
-	//Get latest version
-	GW_LATESTVERSION = "";
-	_extGetLatestVersion = ["GW_LATESTVERSION", ["db"], [GW_SERVERKEY, "GetLatestVersion"]] Spawn fnc_srv_spawnExtension;
-	waitUntil {scriptDone _extGetLatestVersion};
-	GW_LATESTVERSION = (GW_LATESTVERSION select 0) select 1;
-	publicVariable "GW_LATESTVERSION";
-};
 
 //Server-side global
 GW_SPAWNLOCATIONS = [];
@@ -118,53 +96,53 @@ missionNamespace setVariable ["GW_SESSIONS_LIST",[]];
 
 //Compile Server Functions (Always use CompileFinal)
 //Local function names have been made so these functions are never ran after server init
-_initNetworking = CompileFinal preprocessFileLineNumbers format["%1\Init\Init_Networking.sqf",GW_SERVERCODE];
-_initZones = CompileFinal preprocessFileLineNumbers format["%1\Init\Init_Zones.sqf",GW_SERVERCODE];
-_serverUpdate = CompileFinal preprocessFileLineNumbers format["%1\Server_Update.sqf",GW_SERVERCODE];
-fnc_srv_updateZone = CompileFinal preprocessFileLineNumbers format["%1\Functions\fnc_UpdateZone.sqf",GW_SERVERCODE];
-fnc_srv_unitKilled = CompileFinal preprocessFileLineNumbers format["%1\Functions\fnc_unitKilled.sqf",GW_SERVERCODE];
-fnc_srv_updateGarbageCollector = CompileFinal preprocessFileLineNumbers format["%1\Functions\fnc_UpdateGarbageCollector.sqf",GW_SERVERCODE];
-fnc_srv_updateDefenders = CompileFinal preprocessFileLineNumbers format["%1\Functions\fnc_updateDefenders.sqf",GW_SERVERCODE];
-fnc_srv_addToGarbageCollector = CompileFinal preprocessFileLineNumbers format["%1\Functions\fnc_addToGarbageCollector.sqf",GW_SERVERCODE];
-fnc_srv_removeFromGarbageCollector = CompileFinal preprocessFileLineNumbers format["%1\Functions\fnc_removeFromGarbageCollector.sqf",GW_SERVERCODE];
-fnc_srv_updateKnowsAbout = CompileFinal preprocessFileLineNumbers format["%1\Functions\fnc_updateKnowsAbout.sqf",GW_SERVERCODE];
-fnc_srv_createDefenders = CompileFinal preprocessFileLineNumbers format["%1\Functions\fnc_createDefenders.sqf",GW_SERVERCODE];
-fnc_srv_changeMoney = CompileFinal preprocessFileLineNumbers format["%1\Functions\fnc_changeMoney.sqf",GW_SERVERCODE];
-fnc_srv_changeSupply = CompileFinal preprocessFileLineNumbers format["%1\Functions\fnc_changeSupply.sqf",GW_SERVERCODE];
-fnc_srv_createStructure = CompileFinal preprocessFileLineNumbers format["%1\Functions\fnc_createStructure.sqf",GW_SERVERCODE];
-fnc_srv_getStructureArray = CompileFinal preprocessFileLineNumbers format["%1\Functions\fnc_getStructureArray.sqf",GW_SERVERCODE];
-fnc_srv_structureKilled = CompileFinal preprocessFileLineNumbers format["%1\Functions\fnc_structureKilled.sqf",GW_SERVERCODE];
-fnc_srv_structureDamaged = CompileFinal preprocessFileLineNumbers format["%1\Functions\fnc_structureDamaged.sqf",GW_SERVERCODE];
-fnc_srv_updateIncome = CompileFinal preprocessFileLineNumbers format["%1\Functions\fnc_updateIncome.sqf",GW_SERVERCODE];
-fnc_srv_updateVictoryConditions = CompileFinal preprocessFileLineNumbers format["%1\Functions\fnc_updateVictoryConditions.sqf",GW_SERVERCODE];
-fnc_srv_getSupply = CompileFinal preprocessFileLineNumbers format["%1\Functions\fnc_getSupply.sqf",GW_SERVERCODE];
-fnc_srv_createVehicle = CompileFinal preprocessFileLineNumbers format["%1\Functions\fnc_createVehicle.sqf",GW_SERVERCODE];
-fnc_srv_playerVote = CompileFinal preprocessFileLineNumbers format["%1\Functions\fnc_playerVote.sqf",GW_SERVERCODE];
-fnc_srv_updateCommanderVoting = CompileFinal preprocessFileLineNumbers format["%1\Functions\fnc_updateCommanderVoting.sqf",GW_SERVERCODE];
-fnc_srv_initCommVote = CompileFinal preprocessFileLineNumbers format["%1\Functions\fnc_initCommVote.sqf",GW_SERVERCODE];
-fnc_srv_getPlayerMoney = CompileFinal preprocessFileLineNumbers format["%1\Functions\fnc_getMoney.sqf",GW_SERVERCODE];
-fnc_srv_getVehicleArray = CompileFinal preprocessFileLineNumbers format["%1\Functions\fnc_getVehicleArray.sqf",GW_SERVERCODE];
-fnc_srv_updateStructQueues = CompileFinal preprocessFileLineNumbers format["%1\Functions\fnc_updateStructQueues.sqf",GW_SERVERCODE];
-fnc_srv_handleStructQueueItem = CompileFinal preprocessFileLineNumbers format["%1\Functions\fnc_handleStructQueueItem.sqf",GW_SERVERCODE];
-fnc_srv_getMaxSquadSize = CompileFinal preprocessFileLineNumbers format["%1\Functions\fnc_getMaxSquadSize.sqf",GW_SERVERCODE];
-fnc_srv_countInfantryInQueue = CompileFinal preprocessFileLineNumbers format["%1\Functions\fnc_countInfantryInQueue.sqf",GW_SERVERCODE];
-fnc_srv_guerRandomEquip = CompileFinal preprocessFileLineNumbers format["%1\Functions\fnc_guerRandomEquip.sqf",GW_SERVERCODE];
-fnc_srv_changeRankPoints = CompileFinal preprocessFileLineNumbers format["%1\Functions\fnc_changeRankPoints.sqf",GW_SERVERCODE];
-fnc_srv_getTemplates = CompileFinal preprocessFileLineNumbers format["%1\Functions\fnc_getTemplates.sqf",GW_SERVERCODE];
-fnc_srv_updateTeamPlayerMarkers = CompileFinal preprocessFileLineNumbers format["%1\Functions\fnc_updateTeamPlayerMarkers.sqf",GW_SERVERCODE];
-fnc_srv_updateInactiveCollector = CompileFinal preprocessFileLineNumbers format["%1\Functions\fnc_updateInactiveCollector.sqf",GW_SERVERCODE];
-fnc_srv_addToInactiveCollector = CompileFinal preprocessFileLineNumbers format["%1\Functions\fnc_addToInactiveCollector.sqf",GW_SERVERCODE];
-fnc_srv_removeFromInactiveCollector = CompileFinal preprocessFileLineNumbers format["%1\Functions\fnc_removeFromInactiveCollector.sqf",GW_SERVERCODE];
-fnc_srv_checkVehInactive = CompileFinal preprocessFileLineNumbers format["%1\Functions\fnc_checkVehInactive.sqf",GW_SERVERCODE];
-fnc_srv_updateTickets = CompileFinal preprocessFileLineNumbers format["%1\Functions\fnc_updateTickets.sqf",GW_SERVERCODE];
-fnc_srv_changeTickets = CompileFinal preprocessFileLineNumbers format["%1\Functions\fnc_changeTickets.sqf",GW_SERVERCODE];
-fnc_srv_updateRadars = CompileFinal preprocessFileLineNumbers format["%1\Functions\fnc_updateRadars.sqf",GW_SERVERCODE];
-fnc_srv_changeSpecialization = CompileFinal preprocessFileLineNumbers format["%1\Functions\fnc_changeSpecialization.sqf",GW_SERVERCODE];
-fnc_srv_updatePlayerLocations = CompileFinal preprocessFileLineNumbers format["%1\Functions\fnc_updatePlayerLocations.sqf",GW_SERVERCODE];
-fnc_srv_isCommander = CompileFinal preprocessFileLineNumbers format["%1\Functions\fnc_isCommander.sqf",GW_SERVERCODE];
-fnc_srv_getSideGroup = CompileFinal preprocessFileLineNumbers format["%1\Functions\fnc_getSideGroup.sqf",GW_SERVERCODE];
-fnc_srv_structureScriptedDamage = CompileFinal preprocessFileLineNumbers format["%1\Functions\fnc_structureScriptedDamage.sqf",GW_SERVERCODE];
-fnc_srv_markEnemies = CompileFinal preprocessFileLineNumbers format["%1\Functions\fnc_markEnemies.sqf",GW_SERVERCODE];
+_initNetworking = CompileFinal preprocessFileLineNumbers "Server\Init\Init_Networking.sqf";
+_initZones = CompileFinal preprocessFileLineNumbers "Server\Init\Init_Zones.sqf";
+_serverUpdate = CompileFinal preprocessFileLineNumbers "Server\Server_Update.sqf";
+fnc_srv_updateZone = CompileFinal preprocessFileLineNumbers "Server\Functions\fnc_UpdateZone.sqf";
+fnc_srv_unitKilled = CompileFinal preprocessFileLineNumbers "Server\Functions\fnc_unitKilled.sqf";
+fnc_srv_updateGarbageCollector = CompileFinal preprocessFileLineNumbers "Server\Functions\fnc_UpdateGarbageCollector.sqf";
+fnc_srv_updateDefenders = CompileFinal preprocessFileLineNumbers "Server\Functions\fnc_updateDefenders.sqf";
+fnc_srv_addToGarbageCollector = CompileFinal preprocessFileLineNumbers "Server\Functions\fnc_addToGarbageCollector.sqf";
+fnc_srv_removeFromGarbageCollector = CompileFinal preprocessFileLineNumbers "Server\Functions\fnc_removeFromGarbageCollector.sqf";
+fnc_srv_updateKnowsAbout = CompileFinal preprocessFileLineNumbers "Server\Functions\fnc_updateKnowsAbout.sqf";
+fnc_srv_createDefenders = CompileFinal preprocessFileLineNumbers "Server\Functions\fnc_createDefenders.sqf";
+fnc_srv_changeMoney = CompileFinal preprocessFileLineNumbers "Server\Functions\fnc_changeMoney.sqf";
+fnc_srv_changeSupply = CompileFinal preprocessFileLineNumbers "Server\Functions\fnc_changeSupply.sqf";
+fnc_srv_createStructure = CompileFinal preprocessFileLineNumbers "Server\Functions\fnc_createStructure.sqf";
+fnc_srv_getStructureArray = CompileFinal preprocessFileLineNumbers "Server\Functions\fnc_getStructureArray.sqf";
+fnc_srv_structureKilled = CompileFinal preprocessFileLineNumbers "Server\Functions\fnc_structureKilled.sqf";
+fnc_srv_structureDamaged = CompileFinal preprocessFileLineNumbers "Server\Functions\fnc_structureDamaged.sqf";
+fnc_srv_updateIncome = CompileFinal preprocessFileLineNumbers "Server\Functions\fnc_updateIncome.sqf";
+fnc_srv_updateVictoryConditions = CompileFinal preprocessFileLineNumbers "Server\Functions\fnc_updateVictoryConditions.sqf";
+fnc_srv_getSupply = CompileFinal preprocessFileLineNumbers "Server\Functions\fnc_getSupply.sqf";
+fnc_srv_createVehicle = CompileFinal preprocessFileLineNumbers "Server\Functions\fnc_createVehicle.sqf";
+fnc_srv_playerVote = CompileFinal preprocessFileLineNumbers "Server\Functions\fnc_playerVote.sqf";
+fnc_srv_updateCommanderVoting = CompileFinal preprocessFileLineNumbers "Server\Functions\fnc_updateCommanderVoting.sqf";
+fnc_srv_initCommVote = CompileFinal preprocessFileLineNumbers "Server\Functions\fnc_initCommVote.sqf";
+fnc_srv_getPlayerMoney = CompileFinal preprocessFileLineNumbers "Server\Functions\fnc_getMoney.sqf";
+fnc_srv_getVehicleArray = CompileFinal preprocessFileLineNumbers "Server\Functions\fnc_getVehicleArray.sqf";
+fnc_srv_updateStructQueues = CompileFinal preprocessFileLineNumbers "Server\Functions\fnc_updateStructQueues.sqf";
+fnc_srv_handleStructQueueItem = CompileFinal preprocessFileLineNumbers "Server\Functions\fnc_handleStructQueueItem.sqf";
+fnc_srv_getMaxSquadSize = CompileFinal preprocessFileLineNumbers "Server\Functions\fnc_getMaxSquadSize.sqf";
+fnc_srv_countInfantryInQueue = CompileFinal preprocessFileLineNumbers "Server\Functions\fnc_countInfantryInQueue.sqf";
+fnc_srv_guerRandomEquip = CompileFinal preprocessFileLineNumbers "Server\Functions\fnc_guerRandomEquip.sqf";
+fnc_srv_changeRankPoints = CompileFinal preprocessFileLineNumbers "Server\Functions\fnc_changeRankPoints.sqf";
+fnc_srv_getTemplates = CompileFinal preprocessFileLineNumbers "Server\Functions\fnc_getTemplates.sqf";
+fnc_srv_updateTeamPlayerMarkers = CompileFinal preprocessFileLineNumbers "Server\Functions\fnc_updateTeamPlayerMarkers.sqf";
+fnc_srv_updateInactiveCollector = CompileFinal preprocessFileLineNumbers "Server\Functions\fnc_updateInactiveCollector.sqf";
+fnc_srv_addToInactiveCollector = CompileFinal preprocessFileLineNumbers "Server\Functions\fnc_addToInactiveCollector.sqf";
+fnc_srv_removeFromInactiveCollector = CompileFinal preprocessFileLineNumbers "Server\Functions\fnc_removeFromInactiveCollector.sqf";
+fnc_srv_checkVehInactive = CompileFinal preprocessFileLineNumbers "Server\Functions\fnc_checkVehInactive.sqf";
+fnc_srv_updateTickets = CompileFinal preprocessFileLineNumbers "Server\Functions\fnc_updateTickets.sqf";
+fnc_srv_changeTickets = CompileFinal preprocessFileLineNumbers "Server\Functions\fnc_changeTickets.sqf";
+fnc_srv_updateRadars = CompileFinal preprocessFileLineNumbers "Server\Functions\fnc_updateRadars.sqf";
+fnc_srv_changeSpecialization = CompileFinal preprocessFileLineNumbers "Server\Functions\fnc_changeSpecialization.sqf";
+fnc_srv_updatePlayerLocations = CompileFinal preprocessFileLineNumbers "Server\Functions\fnc_updatePlayerLocations.sqf";
+fnc_srv_isCommander = CompileFinal preprocessFileLineNumbers "Server\Functions\fnc_isCommander.sqf";
+fnc_srv_getSideGroup = CompileFinal preprocessFileLineNumbers "Server\Functions\fnc_getSideGroup.sqf";
+fnc_srv_structureScriptedDamage = CompileFinal preprocessFileLineNumbers "Server\Functions\fnc_structureScriptedDamage.sqf";
+fnc_srv_markEnemies = CompileFinal preprocessFileLineNumbers "Server\Functions\fnc_markEnemies.sqf";
 
 //Call Network initialization
 [] Call _initNetworking;
@@ -202,7 +180,7 @@ if (GW_PARAM_MC_QUICKTIME) then {setTimeMultiplier 60};
 
 //Set Viewdistance and terrain grid
 setViewDistance GW_GVAR_VIEWDISTANCE;
-setObjectViewDistance (GW_GVAR_OBJVIEWDISTANCE - 100);
+setObjectViewDistance (GW_GVAR_OBJVIEWDISTANCE - 200);
 setShadowDistance GW_GVAR_SHADOWDISTANCE;
 setTerrainGrid GW_GVAR_TERRAINGRID;
 

@@ -1008,7 +1008,7 @@ else
 								if (_researchConditionScript != "") then
 								{
 									//Execute the script - the side that researched the tech is passed to the script
-									_scriptCode = Compile preprocessFileLineNumbers (format["%1\Functions\Research\%2", GW_SERVERCODE,_researchConditionScript]);
+									_scriptCode = Compile preprocessFileLineNumbers (format["Server\Functions\Research\%1", _researchConditionScript]);
 									if (!isNil "_scriptCode") then {_conditionReturn = _playerSide Call _scriptCode} else {diag_log text "###[GW ERROR] - fnc_clientExec.sqf could not execute a research condition script."};
 								};
 								
@@ -1034,7 +1034,7 @@ else
 									if (_researchActionScript != "") then
 									{
 										//Execute the script - the side that researched the tech is passed to the script
-										_scriptCode = Compile preprocessFileLineNumbers (format["%1\Functions\Research\%2", GW_SERVERCODE,_researchActionScript]);
+										_scriptCode = Compile preprocessFileLineNumbers (format["Server\Functions\Research\%1", _researchActionScript]);
 										if (!isNil "_scriptCode") then 
 										{
 											_scriptWait = _playerSide Spawn _scriptCode;

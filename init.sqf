@@ -6,12 +6,7 @@ disableSerialization;
 //Developer mode enabled or not
 GW_DEVMODE = true;
 
-//Database Support Enabled or not
-//DISABLED until further notice
-GW_DATABASE = false; //("MC_DBSupport" call BIS_fnc_getParamValue) == 1;
-
 //Server code location
-GW_SERVERCODE = if (GW_DEVMODE) then {"Server"} else {"\GWAR3_Server"};
 GW_GWPLUS = false;
 
 //Get root dir of mission in order to use with commands like drawIcon/drawIcon3D
@@ -33,22 +28,10 @@ civ = civilian;
 //Disable raycast sensors (apparently meant to make client performance much better)
 disableRemoteSensors true;
 
-/*
-//Do not allow localhosted play
-//Scripts require a dedicated server to properly run
-if (!GW_DEVMODE) then
-{
-	if (isServer && (!isDedicated)) exitWith
-	{
-		endMission "END1";
-	};
-};
-*/
-
 //Server initialization
 if (isServer) then
 {
-	_serverInit = CompileFinal preprocessFileLineNumbers format["%1\Init\Init_Server.sqf",GW_SERVERCODE];
+	_serverInit = CompileFinal preprocessFileLineNumbers "Server\Init\Init_Server.sqf";
 	[] Spawn _serverInit;	
 };
 
