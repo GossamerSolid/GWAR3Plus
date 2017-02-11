@@ -86,18 +86,6 @@ if (_gameOver) then
 	publicVariable "GW_ENDGAME_TIMER";
 	GW_ENDGAMEARGS = _gameOverArgs;
 
-	if (GW_DATABASE) then
-	{
-		//Update results of match
-		_winner = _gameOverArgs select 0;
-		_loser = if (_winner == west) then {east} else {west};
-		_stayedTillEndList = [];
-		{
-			_stayedTillEndList pushBack (getPlayerUID _x);
-		} forEach playableUnits;
-		["", ["db"], [GW_SERVERKEY, "EndMatch", GW_MATCHID, _winner, _loser, (_gameOverArgs select 1), GW_SERVER_SUDDENDEATH, GW_MATCHLIST, _stayedTillEndList]] Spawn fnc_srv_spawnExtension;
-	};
-	
 	//Get all clients' netids
 	_westClientList = [west, "netid"] Call fnc_shr_getSideMembers;
 	_eastClientList = [east, "netid"] Call fnc_shr_getSideMembers;

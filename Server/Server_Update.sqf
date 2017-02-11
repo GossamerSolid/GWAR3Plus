@@ -5,17 +5,6 @@
 //Wait until there's actually a player present
 waitUntil {time != -1};
 
-//Database server init operations
-if (GW_DATABASE) then
-{
-	//Create a new match and end any existing ones
-	GW_MATCHID_ARRAY = [];
-	_layoutParameter = (Call Compile Format ["GW_PARAM_ML_%1",worldName]);
-	_extNewMatch = ["GW_MATCHID_ARRAY", ["db"], [GW_SERVERKEY, "NewGameMatch", worldName, _layoutParameter]] Spawn fnc_srv_spawnExtension;
-	waitUntil {scriptDone _extNewMatch};
-	GW_MATCHID = (GW_MATCHID_ARRAY select 0) select 1;
-};
-
 //Initialize the update timers for each specific piece of logic
 _updateIncome = GW_SERVER_UPDATE_INCOME;
 _updateIncomeCalc = GW_SERVER_UPDATE_INCOME_CALC;
@@ -113,18 +102,6 @@ while {GW_GAMERUNNING} do
 	{
 		GW_TIME_ELAPSED = GW_TIME_ELAPSED + GW_SERVER_UPDATE_MAIN;
 		publicVariable "GW_TIME_ELAPSED";
-	};
-	
-	//Datamining - Player Locations
-	if (GW_DATABASE) then
-	{
-		/*
-		if (_updateLocations < 1) then
-		{
-			[] Spawn fnc_srv_updatePlayerLocations;
-			_updateLocations = 60;
-		} else {_updateLocations = _updateLocations - GW_SERVER_UPDATE_MAIN};
-		*/
 	};
 	
 	//Trigger sudden death

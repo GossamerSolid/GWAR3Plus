@@ -519,14 +519,6 @@ else
 								//Update session container
 								missionNamespace setVariable [format["GW_SESSION_%1",_playerUID], _sessionContainer];
 								
-								//Update the database
-								if (GW_DATABASE) then 
-								{
-									_dbRequest = "UpdatePlayerTemplates";
-									if (GW_GWPLUS) then {_dbRequest = "UpdatePlayerTemplates+"};
-									["", ["db"], [GW_SERVERKEY, _dbRequest, _playerUID, _playerSide, _playerTemplates]] Spawn fnc_srv_spawnExtension;
-								};
-								
 								//Price the template for the client
 								_templatePrice = _equipmentArray Call fnc_shr_getEquipmentCost;
 								_returnData = [true, _templatePrice];
@@ -567,14 +559,6 @@ else
 							
 							//Update session container
 							missionNamespace setVariable [format["GW_SESSION_%1",_playerUID], _sessionContainer];
-							
-							//Update the database
-							if (GW_DATABASE) then 
-							{
-								_dbRequest = "UpdatePlayerTemplates";
-								if (GW_GWPLUS) then {_dbRequest = "UpdatePlayerTemplates+"};
-								["", ["db"], [GW_SERVERKEY, _dbRequest, _playerUID, _playerSide, _playerTemplates]] Spawn fnc_srv_spawnExtension;
-							};
 							
 							_returnData = [true, ""];
 						}

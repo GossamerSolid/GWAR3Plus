@@ -42,13 +42,6 @@ if (_name != "__SERVER__") then
 	
 	//Initialization message (we use this for team swap prevention)
 	_initMessage = "";
-	
-	//Add player to Database if they don't already exist
-	if (GW_DATABASE) then
-	{
-		waitUntil {GW_MATCHID != -1};
-		["", ["db"], [GW_SERVERKEY, "PlayerConnected", _playerUID, (name _playerObj), GW_MATCHID, (side _playerObj)]] Spawn fnc_srv_spawnExtension;
-	};
 		
 	//See if the player has a session record or not
 	_containerVar = format["GW_SESSION_%1",_playerUID];

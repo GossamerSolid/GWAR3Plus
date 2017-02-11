@@ -86,12 +86,6 @@ if (_name != "__SERVER__") then
 	//Strip equipment
 	removeAllWeapons _playerObj;
 	
-	//Update the player's time played
-	if (GW_DATABASE && GW_GAMERUNNING) then
-	{
-		["", ["db"], [GW_SERVERKEY, "PlayerDisconnected", _uid, (name _playerObj), GW_MATCHID, (side _playerObj)]] Spawn fnc_srv_spawnExtension;
-	};
-	
 	//Remove units in group
 	{
 		deleteVehicle _x;

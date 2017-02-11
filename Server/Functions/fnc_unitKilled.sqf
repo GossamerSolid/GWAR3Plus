@@ -269,17 +269,6 @@ if (!isNil "_unitCost") then
 					//Give the player bonus experience for killing a player
 					[(getPlayerUID _leaderObj), "+", (GW_RANKS select _rankIndex) select 5] Spawn fnc_srv_changeRankPoints;
 				};
-				
-				//Log event in DB
-				if (GW_DATABASE) then
-				{
-					if ((_killedWith != "ERROR") && (_victimClass != "ERROR")) then
-					{
-						_victimUID = (getPlayerUID _objVictim);
-						if (isNil "_victimUID") then {_victimUID = ""};
-						["", ["db"], [GW_SERVERKEY, "UnitKill", GW_MATCHID, (getPlayerUID _leaderObj), _victimUID, _sideKiller, _sideVictim, _killedWith, _killerType, _victimClass, _victimType, _distance, _bounty]] Spawn fnc_srv_spawnExtension;
-					};
-				};
 			};
 			
 			//Teamkill
@@ -304,17 +293,6 @@ if (!isNil "_unitCost") then
 					
 					//Take away extra for killing a friendly player
 					[(getPlayerUID _leaderObj), "-", (GW_RANKS select _rankIndex) select 5] Spawn fnc_srv_changeRankPoints;
-				};
-				
-				//Log event in DB
-				if (GW_DATABASE) then
-				{
-					if ((_killedWith != "ERROR") && (_victimClass != "ERROR")) then
-					{
-						_victimUID = (getPlayerUID _objVictim);
-						if (isNil "_victimUID") then {_victimUID = ""};
-						["", ["db"], [GW_SERVERKEY, "UnitKill", GW_MATCHID, (getPlayerUID _leaderObj), _victimUID, _sideKiller, _sideVictim, _killedWith, _killerType, _victimClass, _victimType, _distance, _bounty]] Spawn fnc_srv_spawnExtension;
-					};
 				};
 			};
 		};
