@@ -1,13 +1,13 @@
 disableSerialization;
-_display = _this select 0;
+private _display = _this select 0;
 
-_btnConstruct = (findDisplay 60006) displayCtrl 1600;
-_btnBuyGear = (findDisplay 60006) displayCtrl 1602;
-_btnService = (findDisplay 60006) displayCtrl 1604;
-_btnSquad = (findDisplay 60006) displayCtrl 1605;
-_btnSpec = (findDisplay 60006) displayCtrl 1607;
-_btnResearch = (findDisplay 60006) displayCtrl 1608;
-_btnServerInfo = (findDisplay 60006) displayCtrl 1606;
+private _btnConstruct = (findDisplay 60006) displayCtrl 1600;
+private _btnBuyGear = (findDisplay 60006) displayCtrl 1602;
+private _btnService = (findDisplay 60006) displayCtrl 1604;
+private _btnSquad = (findDisplay 60006) displayCtrl 1605;
+private _btnSpec = (findDisplay 60006) displayCtrl 1607;
+private _btnResearch = (findDisplay 60006) displayCtrl 1608;
+private _btnServerInfo = (findDisplay 60006) displayCtrl 1606;
 
 //Tell the user whether or not the server is up to date
 _textVersionInfo = (findDisplay 60006) displayCtrl 1107;
@@ -28,7 +28,7 @@ else
 };
 
 //Does the player's team have full mobilization researched?
-_sideHasFullMobilization = [GW_CVAR_SIDE, "Full Mobilization"] Call fnc_shr_isResearched;
+private _sideHasFullMobilization = [GW_CVAR_SIDE, "Full Mobilization"] Call fnc_shr_isResearched;
 
 //Main Updater
 while {dialog} do
@@ -37,7 +37,7 @@ while {dialog} do
 	if (!alive player || isNull (findDisplay 60006)) exitWith {closeDialog 60006};
 	
 	//Disable or Enable construction screen if player can build
-	_canBuild = player Call fnc_clt_canBuild;
+	private _canBuild = player Call fnc_clt_canBuild;
 	if (_canBuild select 0) then {_btnConstruct ctrlEnable true} else {_btnConstruct ctrlEnable false};
 	
 	//Disable or enable gear purchasing depending on range to barracks or camp

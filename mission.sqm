@@ -1,4 +1,4 @@
-version=52;
+version=53;
 class EditorData
 {
 	moveGridStep=1;
@@ -16,17 +16,16 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={8760.6602,101.37389,25233.652};
-		dir[]={0,-0.70710683,0.70710683};
-		up[]={0,0.70710677,0.70710677};
-		aside[]={0.99999994,0,0};
+		pos[]={5730.2637,464.91498,21167.439};
+		dir[]={0.17583661,-0.35014802,-0.9200471};
+		up[]={0.065729864,0.93669558,-0.34392685};
+		aside[]={-0.98222721,-5.2212272e-008,-0.18772002};
 	};
 };
 binarizationWanted=0;
 addons[]=
 {
 	"A3_Ui_F",
-	"WW2_Core_c_Gui_c",
 	"A3_Structures_F_Mil_Cargo",
 	"A3_Characters_F",
 	"A3_Modules_F"
@@ -35,39 +34,34 @@ class AddonsMetaData
 {
 	class List
 	{
-		items=5;
+		items=4;
 		class Item0
 		{
 			className="A3_Ui_F";
 			name="Arma 3 - User Interface";
 			author="Bohemia Interactive";
-			url="http://www.arma3.com";
+			url="https://www.arma3.com";
 		};
 		class Item1
-		{
-			className="WW2_Core_c_Gui_c";
-			name="WW2_Core_c_Gui_c";
-		};
-		class Item2
 		{
 			className="A3_Structures_F_Mil";
 			name="Arma 3 - Military Buildings and Structures";
 			author="Bohemia Interactive";
-			url="http://www.arma3.com";
+			url="https://www.arma3.com";
 		};
-		class Item3
+		class Item2
 		{
 			className="A3_Characters_F";
 			name="Arma 3 Alpha - Characters and Clothing";
 			author="Bohemia Interactive";
-			url="http://www.arma3.com";
+			url="https://www.arma3.com";
 		};
-		class Item4
+		class Item3
 		{
 			className="A3_Modules_F";
 			name="Arma 3 Alpha - Scripted Modules";
 			author="Bohemia Interactive";
-			url="http://www.arma3.com";
+			url="https://www.arma3.com";
 		};
 	};
 };
@@ -495,7 +489,7 @@ class Mission
 			position[]={8600.0244,180.30331,18270.498};
 			name="Zone_11_Detect";
 			type="Empty";
-			angle=217.46692;
+			angle=217.46681;
 			id=32;
 		};
 		class Item33
@@ -504,7 +498,7 @@ class Mission
 			position[]={26994.271,20.468565,23201.654};
 			name="Zone_12_Detect";
 			type="Empty";
-			angle=217.46692;
+			angle=217.46681;
 			id=33;
 		};
 		class Item34

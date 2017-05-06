@@ -5,11 +5,11 @@ disableSerialization;
 
 //Starting
 private["_updateNearbyStructures","_updateDeadSquadMembers","_updateMarkedObjects","_updateVehicleCrew","_updateActions"];
-_updateNearbyStructures = 3;
-_updateDeadSquadMembers = 3;
-_updateMarkedObjects = 3;
-_updateVehicleCrew = 1;
-_updateActions = 1;
+private _updateNearbyStructures = 3;
+private _updateDeadSquadMembers = 3;
+private _updateMarkedObjects = 3;
+private _updateVehicleCrew = 1;
+private _updateActions = 1;
 
 //Initial Calls
 [] Spawn fnc_clt_getNearbyStructures;
@@ -33,12 +33,16 @@ while {GW_GAMERUNNING} do
 	//Prevent player from leaving team
 	player addRating 999999;
 	
+	//Hold the player's position in a var so we don't have to recalc a bunch
+	private _playerPos = getPosATL player;
+	
 	//Increase stamina regen when player is not moving
 	if ((player getVariable ["GW_SPECIALIZATION", ""]) != "Special Forces") then
 	{
 		if ((speed player) == 0) then {player setFatigue (getFatigue player) - 0.007};
 	};
 	
+	/* DISABLED FOR NOW, RETURN AS MISSION PARAMETER
 	//If placing a structure, allow views
 	_isInConstruction = false;
 	if (!isNil "GW_CONSTRUCT_LOCALBUILDING") then
@@ -72,6 +76,7 @@ while {GW_GAMERUNNING} do
 			(vehicle player) switchCamera "INTERNAL";
 		};
 	};
+	*/
 	
 	//Map markers for artillery computer
 	_artyMapCtrl = (findDisplay -1) displayCtrl 500;
@@ -94,29 +99,11 @@ while {GW_GAMERUNNING} do
 		if ((_x getVariable ["GW_GROUPNUM", ""]) == "") then {_x setVariable ["GW_GROUPNUM", str(((units (group player)) find _x) + 1)]};
 	} forEach (units (group player));
 	
-	//Recalc max render distance of mini map icons
-	GW_CVAR_MINIMAP_DRAWDISTANCE = (GW_CVAR_MINIMAP_ZOOM / 0.3) * GW_CVAR_MINIMAP_MAXDISTANCE;
-	
-	//Update GPS watch position
-	GW_CVAR_WATCHPOS = getPosASL player;
-	if (!isNull (getConnectedUAV player)) then
-	{
-		_connectedUAV = getConnectedUAV player;
-		_uavControlArray = UAVControl _connectedUAV;
-		if ((_uavControlArray select 0) == player) then
-		{
-			if ((_uavControlArray select 1) != "") then
-			{
-				GW_CVAR_WATCHPOS = getPosATL _connectedUAV;
-			};
-		};
-	};
-	
 	//Update player side
 	player setVariable ["GW_SIDE", GW_CVAR_SIDE, true];
 	
-	//Hold the player's position in a var so we don't have to recalc a bunch
-	_playerPos = getPosATL player;
+	//Recalc max render distance of mini map icons
+	GW_CVAR_MINIMAP_DRAWDISTANCE = (GW_CVAR_MINIMAP_ZOOM / 0.3) * GW_CVAR_MINIMAP_MAXDISTANCE;
 	
 	//Get nearest zone
 	_nearestZone = _playerPos Call fnc_shr_getNearestZone;

@@ -35,60 +35,55 @@ while {true} do
 				/**********************************/
 				/**** DEFINE ALL CONTROLS HERE ****/
 				/**********************************/
-				_moneyCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1108;
-				_suppliesCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1107;
+				private _moneyCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1108;
+				private _suppliesCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1107;
 				
-				_BGGPSCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1118;
-				_FrameGPSCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1806;
-				_GPSCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1200;
-				_GPSInfoCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1123; 
+				private _BGGPSCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1118;
+				private _FrameGPSCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1806;
+				private _GPSCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1200;
+				private _GPSInfoCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1123; 
 				
-				_structuresInRangeCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1117; 
+				private _structuresInRangeCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1117; 
 				
-				_healthBGCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1120; 
-				_healthFrameCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1807; 
-				_healthBarCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1122; 
-				_healthIconCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1201; 
-				/*
-				_fatigueBGCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1113; 
-				_fatigueFrameCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1804; 
-				_fatigueBarCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1119; 
-				_fatigueIconCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1202; 
-				*/
-				_rankBGCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1114; 
-				_rankFrameCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1808; 
-				_rankBarCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1121; 
-				_rankIconCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1203; 
+				private _healthBGCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1120; 
+				private _healthFrameCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1807; 
+				private _healthBarCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1122; 
+				private _healthIconCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1201; 
 
-				_redBGCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1129;
-				_redMarkerCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1106;
-				_redTicketsCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1111;
-				_redPlayersCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1115;
-				_blueBGCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1110;
-				_blueMarkerCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1106;
-				_blueTicketsCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1112;
-				_bluePlayersCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1116;
+				private _rankBGCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1114; 
+				private _rankFrameCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1808; 
+				private _rankBarCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1121; 
+				private _rankIconCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1203; 
 
-				_commanderCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1109;
-				_squadSizeCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1127;
-				_specializationCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1128;
+				private _redBGCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1129;
+				private _redMarkerCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1106;
+				private _redTicketsCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1111;
+				private _redPlayersCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1115;
+				private _blueBGCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1110;
+				private _blueMarkerCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1106;
+				private _blueTicketsCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1112;
+				private _bluePlayersCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1116;
+
+				private _commanderCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1109;
+				private _squadSizeCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1127;
+				private _specializationCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1128;
 				
-				_progressActionCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1124;
-				_textActionCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1125;
+				private _progressActionCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1124;
+				private _textActionCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1125;
 				
-				_BgZoneCapCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1100;
-				_FrameZoneCapCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1800;
-				_BarZoneCapCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1101;
-				_TextZoneCapCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1102;
+				private _BgZoneCapCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1100;
+				private _FrameZoneCapCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1800;
+				private _BarZoneCapCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1101;
+				private _TextZoneCapCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1102;
 				
-				_BGCampCapCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1104;
-				_FrameCampCapCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1801;
-				_CapCampCapCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1103;
-				_TextCampCapCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1105;
+				private _BGCampCapCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1104;
+				private _FrameCampCapCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1801;
+				private _CapCampCapCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1103;
+				private _TextCampCapCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1105;
 				
-				_vehCrewCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1131;
+				private _vehCrewCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1131;
 				
-				_constructionHelperCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1126;
+				private _constructionHelperCtrl = (["gwar3hud"] call fnc_clt_getGUI) displayCtrl 1126;
 				
 				/******************************************************************************************************************/
 				
@@ -104,6 +99,20 @@ while {true} do
 				//Update GPS
 				if (GW_CVAR_MINIMAP_SHOW) then
 				{
+					GW_CVAR_WATCHPOS = getPosASL player;
+					if (!isNull (getConnectedUAV player)) then
+					{
+						private _connectedUAV = getConnectedUAV player;
+						private _uavControlArray = UAVControl _connectedUAV;
+						if ((_uavControlArray select 0) == player) then
+						{
+							if ((_uavControlArray select 1) != "") then
+							{
+								GW_CVAR_WATCHPOS = getPosATL _connectedUAV;
+							};
+						};
+					};
+					
 					_GPSCtrl CtrlMapAnimAdd [0, GW_CVAR_MINIMAP_ZOOM, GW_CVAR_WATCHPOS];
 					CtrlMapAnimCommit _GPSCtrl;
 					
@@ -128,7 +137,7 @@ while {true} do
 				/******************************************************************************************************************/
 				
 				//Structures in Range
-				_structInRangeText = "";
+				private _structInRangeText = "";
 				if (GW_CVAR_HQ_INRANGE) then {if (_structInRangeText != "") then {_structInRangeText = _structInRangeText + format["<br /><br /><img image='%1'/>", GW_CVAR_HQ_PIC]} else {_structInRangeText = format["<img image='%1'/>", GW_CVAR_HQ_PIC]}};
 				if (GW_CVAR_BARRACKS_INRANGE) then {if (_structInRangeText != "") then {_structInRangeText = _structInRangeText + format["<br /><br /><img image='%1'/>", GW_CVAR_BARRACKS_PIC]} else {_structInRangeText = format["<img image='%1'/>", GW_CVAR_BARRACKS_PIC]}};
 				if (GW_CVAR_NAVAL_INRANGE) then {if (_structInRangeText != "") then {_structInRangeText = _structInRangeText + format["<br /><br /><img image='%1'/>", GW_CVAR_NAVAL_PIC]} else {_structInRangeText = format["<img image='%1'/>", GW_CVAR_NAVAL_PIC]}};
@@ -148,10 +157,10 @@ while {true} do
 				//Health and Stamina (Only when not in vehicle)
 				if ((vehicle player) == player) then
 				{
-					_currentHealth = 1 - damage player;
+					private _currentHealth = 1 - damage player;
 					
-					_HealthMaxWidth = (CtrlPosition _healthBGCtrl select 2) - 0.015;
-					_HealthBarCurPos = CtrlPosition _healthBarCtrl;
+					private _HealthMaxWidth = (CtrlPosition _healthBGCtrl select 2) - 0.015;
+					private _HealthBarCurPos = CtrlPosition _healthBarCtrl;
 					
 					_HealthBarCurPos set [2, _HealthMaxWidth * (_currentHealth / 1)];
 					_healthBarCtrl CtrlSetPosition _HealthBarCurPos;
@@ -160,28 +169,10 @@ while {true} do
 					if (_currentHealth >= 0.4 && _currentHealth < 0.8) then {_healthBarCtrl CtrlSetBackgroundColor [0.9019,0.7608,0,1]};
 					if (_currentHealth < 0.4) then {_healthBarCtrl CtrlSetBackgroundColor [0.6667,0.1294,0.1294,1]};
 					
-					/*
-					_currentFatigue = 1 - getFatigue player;
-					
-					_FatigueMaxWidth = (CtrlPosition _fatigueBGCtrl select 2) - 0.015;
-					_FatigueBarCurPos = CtrlPosition _fatigueBarCtrl;
-					
-					_FatigueBarCurPos set [2, _FatigueMaxWidth * (_currentFatigue / 1)];
-					_fatigueBarCtrl CtrlSetPosition _FatigueBarCurPos;
-					_fatigueBarCtrl CtrlCommit 0;
-					if (_currentFatigue >= 0.8) then {_fatigueBarCtrl CtrlSetBackgroundColor [0,0.8431,0.1961,1]};
-					if (_currentFatigue >= 0.4 && _currentFatigue < 0.8) then {_fatigueBarCtrl CtrlSetBackgroundColor [0.9019,0.7608,0,1]};
-					if (_currentFatigue < 0.4) then {_fatigueBarCtrl CtrlSetBackgroundColor [0.6667,0.1294,0.1294,1]};
-					*/
-					
 					_healthBGCtrl ctrlShow true;
 					_healthFrameCtrl ctrlShow true;
 					_healthBarCtrl ctrlShow true;
 					_healthIconCtrl ctrlShow true;
-					/*_fatigueBGCtrl ctrlShow true;
-					_fatigueFrameCtrl ctrlShow true;
-					_fatigueBarCtrl ctrlShow true;
-					_fatigueIconCtrl ctrlShow true;*/
 				}
 				else
 				{
@@ -189,17 +180,12 @@ while {true} do
 					_healthFrameCtrl ctrlShow false;
 					_healthBarCtrl ctrlShow false;
 					_healthIconCtrl ctrlShow false;
-					/*_fatigueBGCtrl ctrlShow false;
-					_fatigueFrameCtrl ctrlShow false;
-					_fatigueBarCtrl ctrlShow false;
-					_fatigueIconCtrl ctrlShow false;*/
-					
 				};
 				
 				//Rank
 				_rankBarCtrl CtrlSetBackgroundColor GW_CVAR_TEAM_COLOUR_RGBA;
-				_RankBarMaxWidth = (CtrlPosition _rankBGCtrl select 2) - 0.015;
-				_RankBarCurPos = CtrlPosition _rankBarCtrl;
+				private _RankBarMaxWidth = (CtrlPosition _rankBGCtrl select 2) - 0.015;
+				private _RankBarCurPos = CtrlPosition _rankBarCtrl;
 				if ((GW_CVAR_RANK_INFO select 2) > 0) then {_RankBarCurPos set [2, _RankBarMaxWidth * ((GW_CVAR_RANK_INFO select 1) / (GW_CVAR_RANK_INFO select 2))]};
 				_rankBarCtrl CtrlSetPosition _RankBarCurPos;
 				_rankBarCtrl CtrlCommit 0;
@@ -213,10 +199,10 @@ while {true} do
 				
 				/******************************************************************************************************************/
 				//Team Information
-				_westMembers = [west, "varname"] Call fnc_shr_getSideMembers;
+				private _westMembers = [west, "varname"] Call fnc_shr_getSideMembers;
 				if (GW_PARAM_VC_TICKETS) then
 				{
-					_blueTicketText = format["<t align='center' font='PuristaMedium' color='#FFFFFF'>%1 %2</t>",
+					private _blueTicketText = format["<t align='center' font='PuristaMedium' color='#FFFFFF'>%1 %2</t>",
 						GW_TICKETS_WEST,
 						if (GW_TICKETS_WEST_BLEED > 0) then {format["(-%1)",GW_TICKETS_WEST_BLEED]} else {""}
 					];
@@ -232,10 +218,10 @@ while {true} do
 				_blueBGCtrl ctrlShow true;
 				_blueMarkerCtrl ctrlShow true;
 				
-				_eastMembers = [east, "varname"] Call fnc_shr_getSideMembers;
+				private _eastMembers = [east, "varname"] Call fnc_shr_getSideMembers;
 				if (GW_PARAM_VC_TICKETS) then
 				{
-					_redTicketText = format["<t align='center' font='PuristaMedium' color='#FFFFFF'>%1 %2</t>",
+					private _redTicketText = format["<t align='center' font='PuristaMedium' color='#FFFFFF'>%1 %2</t>",
 						GW_TICKETS_EAST,
 						if (GW_TICKETS_EAST_BLEED > 0) then {format["(-%1)",GW_TICKETS_EAST_BLEED]} else {""}
 					];
@@ -254,10 +240,10 @@ while {true} do
 				/******************************************************************************************************************/
 				
 				//Commander, Specialization and Squad Size
-				_TeamCommanderVoting = "";
+				private _TeamCommanderVoting = "";
 				if (GW_CVAR_COMMVOTE_TIME > 0) then {_TeamCommanderVoting = format["<img image='Resources\images\time.paa'/> %1",([GW_CVAR_COMMVOTE_TIME/60/60] call BIS_fnc_timeToString)]};
-				_TeamCommanderText = "No Commander";
-				_commanderObj = missionNamespace getVariable GW_CVAR_COMMANDER;
+				private _TeamCommanderText = "No Commander";
+				private _commanderObj = missionNamespace getVariable GW_CVAR_COMMANDER;
 				if (!isNil "_commanderObj") then
 				{
 					if (!isNull _commanderObj) then 
@@ -272,10 +258,10 @@ while {true} do
 				_squadSizeCtrl ctrlSetStructuredText (parseText format["<t align='right' font='PuristaMedium' color='#FFFFFF'>%1/%2 <img image='Resources\images\squad_size.paa'/>",(player Call fnc_shr_getSquadSize), GW_CVAR_MAXSQUADSIZE]);
 				_squadSizeCtrl ctrlShow true;
 				
-				_specialization = player getVariable ["GW_SPECIALIZATION", "No Specialization"];
-				_specArray = [];
-				_specializationImg = "";
-				_specTimer = if ((GW_CVAR_SPECIALIZATION_TIME == -1) || ((time - GW_CVAR_SPECIALIZATION_TIME) > GW_GVAR_SPECIALFORCES_TIMEOUT)) then {""} else {format["<img image='Resources\images\time.paa'/> %1",[(GW_GVAR_SPECIALFORCES_TIMEOUT - (time - GW_CVAR_SPECIALIZATION_TIME))/60/60] call BIS_fnc_timeToString]};
+				private _specialization = player getVariable ["GW_SPECIALIZATION", "No Specialization"];
+				private _specArray = [];
+				private _specializationImg = "";
+				private _specTimer = if ((GW_CVAR_SPECIALIZATION_TIME == -1) || ((time - GW_CVAR_SPECIALIZATION_TIME) > GW_GVAR_SPECIALFORCES_TIMEOUT)) then {""} else {format["<img image='Resources\images\time.paa'/> %1",[(GW_GVAR_SPECIALFORCES_TIMEOUT - (time - GW_CVAR_SPECIALIZATION_TIME))/60/60] call BIS_fnc_timeToString]};
 				if (_specialization != "No Specialization") then 
 				{
 					_specIndex = [_specialization, 0, GW_SPECIALIZATIONS] Call fnc_shr_arrayGetIndex;
